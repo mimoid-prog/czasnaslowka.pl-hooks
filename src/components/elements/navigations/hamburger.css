@@ -1,0 +1,41 @@
+.open-hamburger .bar {
+  width: 35px;
+  height: 4px;
+  background-color: #fff;
+  margin: 5px 0;
+}
+
+.close-hamburger-box {
+  max-width: 85%;
+  margin: 0 auto;
+  position: relative;
+  transform: translateY(-6px);
+}
+
+.close-hamburger {
+  position: absolute;
+  right: 0;
+  top: 38px;
+}
+
+.close-hamburger .bar {
+  width: 35px;
+  height: 4px;
+  background-color: #000;
+  margin: 5px 0;
+}
+
+.close-hamburger .bar:first-child {
+  transform: rotate(45deg) translateX(6px);
+}
+
+.close-hamburger .bar:last-child {
+  transform: rotate(-45deg) translateX(6px);
+}
+
+@media (min-width: 900px) {
+  .open-hamburger,
+  .close-hamburger-box {
+    display: none;
+  }
+}
