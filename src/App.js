@@ -4,22 +4,28 @@ import Home from "pages/Home";
 import Login from "pages/Login";
 import Signup from "pages/Signup";
 import ForgotPassword from "pages/ForgotPassword";
+import StartLearning from "pages/StartLearning";
+import GuestRoute from "components/routes/GuestRoute";
+import UserRoute from "components/routes/UserRoute";
 
 function App() {
   return (
     <div>
       <Switch>
-        <Route exact path="/">
+        <GuestRoute exact path="/">
           <Home />
-        </Route>
-        <Route path="/logowanie">
+        </GuestRoute>
+        <GuestRoute path="/logowanie">
           <Login />
-        </Route>
-        <Route path="/rejestracja">
+        </GuestRoute>
+        <GuestRoute path="/rejestracja">
           <Signup />
-        </Route>
-        <Route path="/przypomnienie-hasla">
+        </GuestRoute>
+        <GuestRoute path="/przypomnienie-hasla">
           <ForgotPassword />
+        </GuestRoute>
+        <Route path="/zacznij-nauke">
+          <StartLearning />
         </Route>
       </Switch>
     </div>

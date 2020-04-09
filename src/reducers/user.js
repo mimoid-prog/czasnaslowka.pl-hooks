@@ -1,9 +1,9 @@
-import { LANGUAGES_FETCHED, USER_LOGGED_OUT } from "../types";
+import { USER_LOGGED_IN, USER_LOGGED_OUT } from "types";
 
-export default function languages(state = {}, action = {}) {
+export default function user(state = {}, action = {}) {
   switch (action.type) {
-    case LANGUAGES_FETCHED:
-      return { items: action.data, fetched: true };
+    case USER_LOGGED_IN:
+      return action.user;
     case USER_LOGGED_OUT:
       return {};
     default:

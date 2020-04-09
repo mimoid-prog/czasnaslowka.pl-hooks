@@ -11,8 +11,12 @@ import thunk from "redux-thunk";
 import decode from "jwt-decode";
 import { userLoggedIn } from "./actions/auth";
 import setAuthorizationHeader from "setAuthorizationHeader";
+import { composeWithDevTools } from "redux-devtools-extension";
 
-const store = createStore(rootReducer, applyMiddleware(thunk));
+const store = createStore(
+  rootReducer,
+  composeWithDevTools(applyMiddleware(thunk))
+);
 
 if (localStorage.czasnaslowkaJWT) {
   const payload = decode(localStorage.czasnaslowkaJWT);

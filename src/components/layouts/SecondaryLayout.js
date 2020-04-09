@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { ReactComponent as Logo } from "images/logo.svg";
 import logoWithFlags from "images/logoWithFlags.png";
-import "./secondary.css";
+import "./secondaryLayout.css";
 
 const SecondaryLayout = (props) => {
   return (
