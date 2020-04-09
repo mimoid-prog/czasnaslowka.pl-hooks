@@ -209,12 +209,33 @@ select option {
 
   .quaternary-title {
     font-size: 22px;
-    margin-bottom: 10px;
+    margin-bottom: 14px;
   }
 }
 
 @media (min-width: 1400px) {
   .container {
     max-width: 75%;
+  }
+}
+
+/* LOGO-------- */
+.logo-with-flags {
+  display: none;
+}
+
+.logo {
+  width: 60vw;
+}
+
+@media (min-width: 600px) {
+  .logo-with-flags {
+    display: block;
+    width: 323px;
+    height: 58px;
+  }
+
+  .logo {
+    display: none;
   }
 }

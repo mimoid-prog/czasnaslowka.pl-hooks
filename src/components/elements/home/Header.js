@@ -23,7 +23,7 @@ const Header = () => {
                 Po prostu.
               </h2>
               <Link
-                to="/choose_set"
+                to="/zacznij-nauke"
                 className="no-border-btn blue-btn get-started-btn"
               >
                 Rozpocznij

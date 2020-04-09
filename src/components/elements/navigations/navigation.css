@@ -14,14 +14,6 @@
   align-items: center;
 }
 
-.logo-with-flags {
-  display: none;
-}
-
-.logo {
-  width: 60vw;
-}
-
 .navbar-inner-box {
   position: fixed;
   width: 100%;
@@ -73,18 +65,6 @@
   text-transform: uppercase;
 }
 
-@media (min-width: 600px) {
-  .logo-with-flags {
-    display: block;
-    width: 323px;
-    height: 58px;
-  }
-
-  .logo {
-    display: none;
-  }
-}
-
 @media (min-width: 900px) {
   .login-btn {
     color: #fff;
@@ -110,6 +90,7 @@
     opacity: 1;
     visibility: visible;
     overflow: visible;
+    transform: translateX(0);
   }
 
   .nav {

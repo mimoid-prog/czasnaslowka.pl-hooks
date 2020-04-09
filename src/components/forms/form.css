@@ -1,0 +1,84 @@
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-label {
+  margin-top: 15px;
+}
+
+.form-label:first-child {
+  margin-top: 0;
+}
+
+.form-input {
+  margin: 5px 0 0;
+  padding: 0 15px;
+  height: 55px;
+  background-color: #f2f2f2;
+  transition: var(--animate);
+  font-size: 18px;
+}
+
+.form-input:focus {
+  border-right: 8px solid var(--blue-color);
+  outline: 0;
+}
+
+/* .form-input-error {
+  background-color: #ffefef;
+  border: 1px solid #e84c4c;
+} */
+
+.form-input-message-error {
+  font-size: 14px;
+  color: red;
+  margin-bottom: 10px;
+}
+
+.form-btn {
+  width: 60%;
+  margin: 50px auto 10px;
+  font-size: 16px;
+  padding: 0;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 40px;
+  cursor: pointer;
+  outline: 0;
+}
+
+.forgot-password-link {
+  text-align: right;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.form-error {
+  text-align: center;
+  font-size: 16px;
+}
+
+.change-form {
+  text-align: center;
+  margin-top: 60px;
+  font-size: 16px;
+}
+
+.change-form-link {
+  color: var(--pink-color);
+}
+
+.form-message {
+  text-align: center;
+}
+
+.form-home-link {
+  color: var(--pink-color);
+}
+
+.form-message p {
+  margin-bottom: 15px;
+}

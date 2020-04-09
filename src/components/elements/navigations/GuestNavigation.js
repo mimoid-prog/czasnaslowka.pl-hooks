@@ -16,12 +16,14 @@ const GuestNavigation = () => {
       <div className="container">
         <div className="navbar-content">
           <div>
-            <Logo className="logo" />
-            <img
-              src={logoWithFlags}
-              className="logo-with-flags"
-              alt="czasnaslowka.pl logo"
-            />
+            <Link to="/">
+              <Logo className="logo" />
+              <img
+                src={logoWithFlags}
+                className="logo-with-flags"
+                alt="czasnaslowka.pl logo"
+              />
+            </Link>
           </div>
           <div className={`navbar-inner ${showMenu ? "active" : ""}`}>
             <OpenHamburger openMenu={openMenu} />
@@ -30,13 +32,13 @@ const GuestNavigation = () => {
               <div className="nav">
                 <ul>
                   <li>
-                    <Link to="/login" className="pure-btn login-btn">
+                    <Link to="/logowanie" className="pure-btn login-btn">
                       Zaloguj
                     </Link>
                   </li>
 
                   <li>
-                    <Link to="/signup" className="pure-btn signup-btn">
+                    <Link to="/rejestracja" className="pure-btn signup-btn">
                       Zarejestruj
                     </Link>
                   </li>

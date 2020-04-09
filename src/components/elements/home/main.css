@@ -53,6 +53,7 @@
 @media (max-width: 1200px) {
   .main-text {
     width: 55%;
+    text-align: left;
   }
 
   .main-grid {
