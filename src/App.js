@@ -8,6 +8,7 @@ import StartLearning from "pages/StartLearning";
 import GuestRoute from "components/routes/GuestRoute";
 import UserRoute from "components/routes/UserRoute";
 import Learning from "pages/Learning";
+import MyProfile from "pages/MyProfile";
 
 function App() {
   return (
@@ -31,6 +32,9 @@ function App() {
         <Route path="/nauka">
           <Learning />
         </Route>
+        <UserRoute path="/moj-profil">
+          <MyProfile />
+        </UserRoute>
       </Switch>
     </div>
   );

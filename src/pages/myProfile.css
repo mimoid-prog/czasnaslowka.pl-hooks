@@ -1,0 +1,44 @@
+.my-profile .container {
+  padding: 40px 0 60px;
+  text-align: center;
+}
+
+.my-profile img {
+  margin: 0 auto 12px;
+  width: 24px;
+}
+
+.my-account-section {
+  margin: 0 auto 40px;
+}
+
+.settings-section {
+  margin: 0 auto;
+}
+
+.my-account-box,
+.settings-box {
+  background-color: #fff;
+  width: 100%;
+  border: 3px solid var(--dark-blue-color);
+  padding: 20px 40px;
+  text-align: center;
+}
+
+.my-account-box p:first-of-type {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.settings-box button {
+  display: block;
+  margin: 5px auto;
+  font-size: 18px;
+}
+
+@media (min-width: 600px) {
+  .my-account-section,
+  .settings-section {
+    width: 400px;
+  }
+}

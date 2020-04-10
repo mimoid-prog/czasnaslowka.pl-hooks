@@ -52,7 +52,10 @@ const Categories = () => {
               </li>
             ))}
           </ul>
-          <Link to="/zacznij-nauke" className="no-border-btn pure-btn back">
+          <Link
+            to="/zacznij-nauke"
+            className="no-border-btn no-bg-btn pure-btn back"
+          >
             <Arrow className="back-icon" />
             <p>Wróć</p>
           </Link>

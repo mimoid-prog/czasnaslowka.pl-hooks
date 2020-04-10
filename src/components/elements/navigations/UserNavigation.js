@@ -53,7 +53,7 @@ const UserNavigation = (props) => {
                   </li>
 
                   <li>
-                    <NavLink activeClassName="active" to="/profil">
+                    <NavLink activeClassName="active" to="/moj-profil">
                       Mój profil
                     </NavLink>
                   </li>

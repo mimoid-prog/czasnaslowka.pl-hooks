@@ -5,7 +5,7 @@ const CloseHamburger = (props) => {
   return (
     <div className="close-hamburger-box">
       <button
-        className="no-border-btn pure-btn close-hamburger"
+        className="no-border-btn no-bg-btn pure-btn close-hamburger"
         onClick={props.closeMenu}
       >
         <div className="bar" />

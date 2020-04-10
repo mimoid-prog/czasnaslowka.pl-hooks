@@ -27,7 +27,10 @@ const Mode = (props) => {
           <p>Bez pisania</p>
         </Link>
       </div>
-      <button onClick={history.goBack} className="no-border-btn pure-btn back">
+      <button
+        onClick={history.goBack}
+        className="no-border-btn no-bg-btn pure-btn back"
+      >
         <Arrow className="back-icon" />
         <p>Wróć</p>
       </button>

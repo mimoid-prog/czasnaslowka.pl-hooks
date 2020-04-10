@@ -229,6 +229,7 @@ select option {
 
 .logo {
   width: 60vw;
+  display: block;
 }
 
 @media (min-width: 600px) {

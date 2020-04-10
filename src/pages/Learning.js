@@ -12,6 +12,8 @@ import "./learning.css";
 const Learning = (props) => {
   const scrollbar = useRef(null);
   let query = useQuery();
+  const method = query.get("method");
+
   const [isLoading, setIsLoading] = useState(true);
   const [set, setSet] = useState({
     foreignWords: [],
@@ -30,7 +32,6 @@ const Learning = (props) => {
     isRunning: false,
   });
   const [chart, setChart] = useState({});
-  const method = query.get("method");
 
   const shuffleArray = (array, array2) => {
     for (let i = array.length - 1; i > 0; i--) {
