@@ -1,0 +1,176 @@
+.learning-content {
+  text-align: center;
+  padding: 40px 0 30px;
+}
+
+.word-banner1 {
+  padding: 25px 0;
+  border: 3px solid var(--dark-blue-color);
+}
+
+.word-banner2 {
+  border: 3px solid var(--dark-pink-bg-color);
+  border-top: none;
+  padding: 25px 0;
+}
+
+.word-banner3 {
+  padding: 25px;
+  border: 3px solid var(--dark-pink-bg-color);
+}
+
+.learning-section button {
+  margin-top: 15px;
+  color: #fff;
+  border-radius: 40px;
+}
+
+.answer-input {
+  border-bottom: 3px dotted var(--dark-pink-bg-color);
+  text-align: center;
+  font-size: 18px;
+  width: 35%;
+  transition: var(--animate);
+  padding-bottom: 2px;
+  font-family: "Poppins", sans-serif;
+}
+
+.learning-btn {
+  padding-left: 0;
+  padding-right: 0;
+  width: 130px;
+}
+
+.wo-btn {
+  margin-right: 16px;
+  background-color: #4ba851;
+  padding: 10px;
+  width: 40%;
+  font-size: 16px;
+  transition: var(--animate);
+}
+
+.wo-btn:hover {
+  background-color: #4fb856;
+}
+
+.wo-btn-2 {
+  background-color: #db3f3f;
+  padding: 10px;
+  width: 40%;
+  font-size: 16px;
+  transition: var(--animate);
+}
+
+.wo-btn-2:hover {
+  background-color: #eb3b3b;
+}
+
+.w-btn {
+  background: var(--blue-color);
+}
+
+.answers-section {
+  margin-top: 40px;
+}
+
+.answers-box {
+  border-top: 2px solid var(--light-background-color);
+}
+
+.answers-box p {
+  border-bottom: 1px solid var(--light-background-color);
+  padding: 7px 10px;
+}
+
+.answers-box p:last-of-type {
+  border-bottom: 0;
+}
+
+.correct-answer {
+  background-color: #97db97;
+}
+
+.wrong-answer {
+  background-color: #ff7d7d;
+}
+
+.default {
+  background-color: #fff;
+}
+
+.timer {
+  width: 100px;
+  height: 100px;
+  background-color: #353535;
+  border-radius: 50%;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 25px auto 30px;
+}
+
+.timer p {
+  color: #fff;
+}
+
+.again-btn {
+  display: inline-block;
+  font-size: 24px;
+  cursor: pointer;
+  margin: 0 auto;
+}
+
+.again-btn div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.again-btn .icon {
+  margin-right: 6px;
+  width: 20px;
+  transition: var(--animate);
+}
+
+.again-btn:hover .icon {
+  transform: rotate(20deg);
+}
+
+.again-btn p {
+  font-size: 20px;
+  transform: translateY(2px);
+}
+
+@media (min-width: 600px) {
+  .learning-content {
+    width: 450px;
+    margin: 0 auto;
+  }
+
+  .wo-btn,
+  .wo-btn-2 {
+    width: 150px;
+  }
+
+  .word-banner3 {
+    padding: 30px 25px;
+  }
+}
+
+@media (min-width: 1000px) {
+  .learning-content {
+    width: 500px;
+    padding: 70px 0;
+  }
+
+  .word-banner3 {
+    padding: 35px 25px;
+  }
+
+  .answers-section {
+    margin-top: 60px;
+  }
+}

@@ -61,7 +61,7 @@ const UserNavigation = (props) => {
                   <li>
                     <button
                       onClick={() => setRedirectToHome(true)}
-                      className="no-border-btn pure-btn"
+                      className="no-border-btn no-bg-btn pure-btn"
                     >
                       Wyloguj
                     </button>

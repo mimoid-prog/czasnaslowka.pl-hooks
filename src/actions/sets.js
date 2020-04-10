@@ -9,6 +9,8 @@ export const setsFetched = (data) => ({
 /*AUTH SETS*/
 export const fetchUserSet = (id) => () => api.authSets.fetchUserSet(id);
 
+export const fetchSet = (id) => () => api.sets.fetchSet(id);
+
 export const fetchSets = () => (dispatch) =>
   api.authSets.fetchSets().then((data) => dispatch(setsFetched(data)));
 

@@ -33,6 +33,8 @@ export default {
         .then((res) => res.data.set),
   },
   sets: {
+    fetchSet: (id) =>
+      axios.post("/api/sets/fetchSet", { id }).then((res) => res.data.set),
     fetchGuestSet: (id) =>
       axios.post("/api/sets/fetchGuestSet", { id }).then((res) => res.data.set),
     fetchGuestSets: (lang) =>

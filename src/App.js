@@ -7,6 +7,7 @@ import ForgotPassword from "pages/ForgotPassword";
 import StartLearning from "pages/StartLearning";
 import GuestRoute from "components/routes/GuestRoute";
 import UserRoute from "components/routes/UserRoute";
+import Learning from "pages/Learning";
 
 function App() {
   return (
@@ -26,6 +27,9 @@ function App() {
         </GuestRoute>
         <Route path="/zacznij-nauke">
           <StartLearning />
+        </Route>
+        <Route path="/nauka">
+          <Learning />
         </Route>
       </Switch>
     </div>

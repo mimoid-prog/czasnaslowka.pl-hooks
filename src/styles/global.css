@@ -74,8 +74,11 @@ a {
   border: 0;
 }
 
-.pure-btn {
+.no-bg-btn {
   background: none;
+}
+
+.pure-btn {
   transition: var(--animate);
   cursor: pointer;
 }
