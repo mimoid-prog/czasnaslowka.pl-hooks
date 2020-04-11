@@ -30,7 +30,7 @@ const Sets = (props) => {
                   pathname: `${match.path}/tryb`,
                   state: {
                     id: item.id,
-                    public: false,
+                    public: "no",
                   },
                 }}
               >

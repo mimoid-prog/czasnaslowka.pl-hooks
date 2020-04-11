@@ -4,16 +4,15 @@ import { ReactComponent as Arrow } from "images/arrow.svg";
 import Loading from "components/utils/Loading";
 import api from "api";
 
-const Categories = () => {
+const PublicSets = () => {
   let location = useLocation();
   let match = useRouteMatch();
   const [isLoading, setIsLoading] = useState(true);
   const [sets, setSets] = useState([]);
 
   useEffect(() => {
-    api.sets.fetchGuestSets(location.state.language).then((data) => {
+    api.publicSets.fetchPublicSets(location.state.language).then((data) => {
       setIsLoading(false);
-      console.log(data);
       setSets(data);
     });
   }, []);
@@ -33,7 +32,7 @@ const Categories = () => {
                     pathname: `/zacznij-nauke/tryb`,
                     state: {
                       id: item.id,
-                      public: true,
+                      public: "yes",
                     },
                   }}
                 >
@@ -65,4 +64,4 @@ const Categories = () => {
   );
 };
 
-export default Categories;
+export default PublicSets;

@@ -7,13 +7,13 @@ const Languages = (props) => {
 
   return (
     <div className="languages">
-      <h2 className="secondary-title">Gotowe zestawy</h2>
+      <h2 className="secondary-title">Języki</h2>
       <ul className="sets-and-languages-list">
         {props.languages.map((item, i) => (
           <li className="item set-field" key={i}>
             <Link
               to={{
-                pathname: `${match.path}/kategorie`,
+                pathname: `${match.path}/zestawy`,
                 state: {
                   language: item.language,
                 },

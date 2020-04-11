@@ -6,8 +6,8 @@ const Promise = require("bluebird");
 
 const auth = require("./routes/auth");
 const users = require("./routes/users");
-const sets = require("./routes/sets");
-const authSets = require("./routes/authSets");
+const userSets = require("./routes/userSets");
+const publicSets = require("./routes/publicSets");
 const languages = require("./routes/languages");
 
 dotenv.config();
@@ -23,8 +23,8 @@ mongoose.connect(process.env.MONGODB_URL, {
 
 app.use("/api/auth", auth);
 app.use("/api/users", users);
-app.use("/api/sets", sets);
-app.use("/api/authSets", authSets);
+app.use("/api/user_sets", userSets);
+app.use("/api/public_sets", publicSets);
 app.use("/api/languages", languages);
 
 app.get("*", (req, res) => {

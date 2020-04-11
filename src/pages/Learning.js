@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
-import { fetchSet } from "actions/sets";
+import { fetchUserSet } from "actions/userSets";
+import { fetchPublicSet } from "actions/publicSets";
 import { connect } from "react-redux";
 import MainLayout from "components/layouts/MainLayout";
 import Loading from "components/utils/Loading";
@@ -15,6 +16,7 @@ const Learning = (props) => {
   const method = query.get("method");
 
   const [isLoading, setIsLoading] = useState(true);
+  const [errorMessage, setErrorMessage] = useState("");
   const [set, setSet] = useState({
     foreignWords: [],
     polishWords: [],
@@ -124,16 +126,38 @@ const Learning = (props) => {
 
   useEffect(() => {
     const id = query.get("id");
-    props
-      .fetchSet(id)
-      .then((res) => {
-        setIsLoading(false);
-        shuffleArray(res.foreignWords, res.polishWords);
-        setSet(res);
-      })
-      .catch((err) => {
-        setIsLoading(false);
-      });
+    const isPublic = query.get("public");
+    if (isPublic === "no") {
+      props
+        .fetchUserSet(id)
+        .then((res) => {
+          setIsLoading(false);
+          shuffleArray(res.foreignWords, res.polishWords);
+          setSet({
+            foreignWords: res.foreignWords,
+            polishWords: res.polishWords,
+          });
+        })
+        .catch((err) => {
+          setIsLoading(false);
+          setErrorMessage(err.response.data.error);
+        });
+    } else {
+      props
+        .fetchPublicSet(id)
+        .then((res) => {
+          setIsLoading(false);
+          shuffleArray(res.foreignWords, res.polishWords);
+          setSet({
+            foreignWords: res.foreignWords,
+            polishWords: res.polishWords,
+          });
+        })
+        .catch((err) => {
+          setIsLoading(false);
+          setErrorMessage(err.response.data.error);
+        });
+    }
   }, []);
 
   useEffect(() => {
@@ -142,6 +166,7 @@ const Learning = (props) => {
     }
   }, [answers.index]);
 
+  console.log("err", errorMessage);
   return (
     <MainLayout>
       <div className="learning">
@@ -149,88 +174,97 @@ const Learning = (props) => {
           {isLoading ? (
             <Loading />
           ) : (
-            <div className="learning-content">
-              {!learningEnded ? (
-                <div className="learning-section">
-                  <h3 className="tertiary-title">
-                    Pozostałe słówka: {set.foreignWords.length - answers.index}
-                  </h3>
+            <>
+              {!errorMessage ? (
+                <div className="learning-content">
+                  {!learningEnded ? (
+                    <div className="learning-section">
+                      <h3 className="tertiary-title">
+                        Pozostałe słówka:{" "}
+                        {set.foreignWords.length - answers.index}
+                      </h3>
 
-                  {method === "with" ? (
-                    <div className="with-box">
-                      <div className="word-banner1">
-                        <p>{set.polishWords[answers.index]}</p>
-                      </div>
-                      <div className="word-banner2">
-                        <input
-                          className="pure-btn answer-input"
-                          value={answer}
-                          onChange={(e) => setAnswer(e.target.value)}
-                          onKeyPress={checkKey}
-                        />
-                      </div>
-                      <button
-                        className="no-border-btn pure-btn ess-btn blue-btn"
-                        onClick={checkAnswer}
-                      >
-                        sprawdź
-                      </button>
+                      {method === "with" ? (
+                        <div className="with-box">
+                          <div className="word-banner1">
+                            <p>{set.polishWords[answers.index]}</p>
+                          </div>
+                          <div className="word-banner2">
+                            <input
+                              className="pure-btn answer-input"
+                              value={answer}
+                              onChange={(e) => setAnswer(e.target.value)}
+                              onKeyPress={checkKey}
+                            />
+                          </div>
+                          <button
+                            className="no-border-btn pure-btn ess-btn blue-btn"
+                            onClick={checkAnswer}
+                          >
+                            sprawdź
+                          </button>
+                        </div>
+                      ) : (
+                        <div className="without-box">
+                          <div className="word-banner3">
+                            <p>{set.foreignWords[answers.index]}</p>
+                          </div>
+                          <button
+                            className="no-border-btn pure-btn wo-btn"
+                            onClick={() => checkAnswer(true)}
+                          >
+                            znam
+                          </button>
+                          <button
+                            className="no-border-btn pure-btn wo-btn-2"
+                            onClick={() => checkAnswer(false)}
+                          >
+                            nie znam
+                          </button>
+                        </div>
+                      )}
                     </div>
                   ) : (
-                    <div className="without-box">
-                      <div className="word-banner3">
-                        <p>{set.foreignWords[answers.index]}</p>
+                    <div className="statistics-section">
+                      <h2 className="tertiary-title">Wyniki</h2>
+                      <div className="statistics-box">
+                        <Pie data={chart} />
+                        <div className="timer">
+                          <p className="seconds">{timer.count} sek</p>
+                        </div>
                       </div>
-                      <button
-                        className="no-border-btn pure-btn wo-btn"
-                        onClick={() => checkAnswer(true)}
-                      >
-                        znam
-                      </button>
-                      <button
-                        className="no-border-btn pure-btn wo-btn-2"
-                        onClick={() => checkAnswer(false)}
-                      >
-                        nie znam
-                      </button>
+                      <div className="again-btn" onClick={resetState}>
+                        <div>
+                          <img
+                            src={repeatImg}
+                            className="icon"
+                            alt="Ikonka powtórzenia"
+                          />
+                          <p>Zacznij ponownie</p>
+                        </div>
+                      </div>
                     </div>
                   )}
+
+                  <div className="answers-section">
+                    <h3 className="tertiary-title">Odpowiedzi:</h3>
+                    <div className="answers-box">
+                      <Scrollbars style={{ height: 264 }} ref={scrollbar}>
+                        {answers.items.map((item, i) => (
+                          <p key={i} className={answers.isCorrect[i]}>
+                            {item}
+                          </p>
+                        ))}
+                      </Scrollbars>
+                    </div>
+                  </div>
                 </div>
               ) : (
-                <div className="statistics-section">
-                  <h2 className="tertiary-title">Wyniki</h2>
-                  <div className="statistics-box">
-                    <Pie data={chart} />
-                    <div className="timer">
-                      <p className="seconds">{timer.count} sek</p>
-                    </div>
-                  </div>
-                  <div className="again-btn" onClick={resetState}>
-                    <div>
-                      <img
-                        src={repeatImg}
-                        className="icon"
-                        alt="Ikonka powtórzenia"
-                      />
-                      <p>Zacznij ponownie</p>
-                    </div>
-                  </div>
-                </div>
+                <h3 className="tertiary-title page-error-message">
+                  {errorMessage}
+                </h3>
               )}
-
-              <div className="answers-section">
-                <h3 className="tertiary-title">Odpowiedzi:</h3>
-                <div className="answers-box">
-                  <Scrollbars style={{ height: 264 }} ref={scrollbar}>
-                    {answers.items.map((item, i) => (
-                      <p key={i} className={answers.isCorrect[i]}>
-                        {item}
-                      </p>
-                    ))}
-                  </Scrollbars>
-                </div>
-              </div>
-            </div>
+            </>
           )}
         </div>
       </div>
@@ -260,4 +294,4 @@ function useInterval(callback, delay) {
   }, [delay]);
 }
 
-export default connect(null, { fetchSet })(Learning);
+export default connect(null, { fetchUserSet, fetchPublicSet })(Learning);

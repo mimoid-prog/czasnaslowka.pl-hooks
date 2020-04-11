@@ -13,14 +13,14 @@ const Mode = (props) => {
       <h2 className="secondary-title">Wybierz tryb:</h2>
       <div className="modes-box">
         <Link
-          to={`/nauka?id=${location.state.id}&method=with`}
+          to={`/nauka?id=${location.state.id}&method=with&public=${location.state.public}`}
           className="writing-mode mode-item"
         >
           <img src={keyboard} className="writing-icon" alt="Ikona klawiatury" />
           <p>Z pisaniem</p>
         </Link>
         <Link
-          to={`/nauka?id=${location.state.id}&method=without`}
+          to={`/nauka?id=${location.state.id}&method=without&public=${location.state.public}`}
           className="without-mode mode-item"
         >
           <img src={mouse} className="without-icon" alt="Ikona myszki" />

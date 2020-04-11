@@ -32,6 +32,10 @@ const GuestNavigation = () => {
               <div className="nav">
                 <ul>
                   <li>
+                    <Link to="/zacznij-nauke">Zacznij naukę</Link>
+                  </li>
+
+                  <li>
                     <Link to="/logowanie" className="pure-btn login-btn">
                       Zaloguj
                     </Link>

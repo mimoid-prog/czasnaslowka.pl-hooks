@@ -15,67 +15,40 @@ export default {
     validateToken: (token) => axios.post("/api/auth/validate_token", { token }),
     resetPassword: (data) => axios.post("/api/auth/reset_password", { data }),
   },
-  authSets: {
-    fetchSets: () => axios.post("/api/authSets").then((res) => res.data.sets),
-    createSet: (set) =>
-      axios
-        .post("/api/authSets/createSet", { set })
-        .then((res) => res.data.sets),
-    editSet: (set) =>
-      axios.post("/api/authSets/editSet", { set }).then((res) => res.data.sets),
-    removeSet: (id) =>
-      axios
-        .post("/api/authSets/removeSet", { id })
-        .then((res) => res.data.sets),
+  userSets: {
     fetchUserSet: (id) =>
       axios
-        .post("/api/authSets/fetchUserSet", { id })
+        .post("/api/user_sets/fetch_user_set", { id })
         .then((res) => res.data.set),
-  },
-  sets: {
-    fetchSet: (id) =>
-      axios.post("/api/sets/fetchSet", { id }).then((res) => res.data.set),
-    fetchGuestSet: (id) =>
-      axios.post("/api/sets/fetchGuestSet", { id }).then((res) => res.data.set),
-    fetchGuestSets: (lang) =>
+    fetchUserSets: () =>
+      axios.post("/api/user_sets/fetch_user_sets").then((res) => res.data.sets),
+    createSet: (set) =>
       axios
-        .post("/api/sets/fetchGuestSets", { lang })
+        .post("/api/user_sets/create_set", { set })
+        .then((res) => res.data.sets),
+    updateSet: (set) =>
+      axios
+        .post("/api/user_sets/update_set", { set })
+        .then((res) => res.data.sets),
+    removeSet: (id) =>
+      axios
+        .post("/api/user_sets/remove_set", { id })
+        .then((res) => res.data.sets),
+  },
+  publicSets: {
+    fetchPublicSet: (id) =>
+      axios
+        .post("/api/public_sets/fetch_public_set", { id })
+        .then((res) => res.data.set),
+    fetchPublicSets: () =>
+      axios
+        .post("/api/public_sets/fetch_public_sets")
         .then((res) => res.data.sets),
   },
   languages: {
     fetchLanguages: () =>
-      axios.post("/api/languages").then((res) => res.data.languages),
-  },
-  doingStuff: {
-    verifyRank: () =>
-      axios.post("/api/doingStuff").then((res) => res.data.rank),
-    addNewLanguage: (lang) =>
       axios
-        .post("/api/doingStuff/addNewLanguage", { lang })
+        .post("/api/languages/fetch_languages")
         .then((res) => res.data.languages),
-    removeLanguage: (languageName) =>
-      axios
-        .post("/api/doingStuff/removeLanguage", { languageName })
-        .then((res) => res.data.languages),
-    fetchSets: (lang) =>
-      axios
-        .post("/api/doingStuff/fetchSets", { lang })
-        .then((res) => res.data.sets),
-    removeSet: (setID, lang) =>
-      axios
-        .post("/api/doingStuff/removeSet", { setID, lang })
-        .then((res) => res.data.sets),
-    fetchSet: (setID) =>
-      axios
-        .post("/api/doingStuff/fetchSet", { setID })
-        .then((res) => res.data.set),
-    editSet: (set) =>
-      axios
-        .post("/api/doingStuff/editSet", { set })
-        .then((res) => res.data.set),
-    createSet: (set) =>
-      axios
-        .post("/api/doingStuff/createSet", { set })
-        .then((res) => res.data.set),
   },
 };

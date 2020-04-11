@@ -6,7 +6,7 @@ const schema = new mongoose.Schema({
   owner: { type: String, required: true },
   language: { type: String, required: true },
   foreignWords: [{ type: String }],
-  polishWords: [{ type: String }]
+  polishWords: [{ type: String }],
 });
 
 module.exports = mongoose.model("Set", schema);

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { fetchSets } from "actions/sets";
+import { fetchUserSets } from "actions/userSets";
 import { fetchLanguages } from "actions/languages";
 import Loading from "components/utils/Loading";
 import Languages from "./Languages";
@@ -15,11 +15,11 @@ const SetsAndLanguages = (props) => {
   useEffect(() => {
     if (props.isAuthenticated) {
       if (sets === false && languages === false)
-        Promise.all([props.fetchSets(), props.fetchLanguages()]).then(() =>
+        Promise.all([props.fetchUserSets(), props.fetchLanguages()]).then(() =>
           setIsLoading(false)
         );
       else if (sets === false)
-        props.fetchSets().then(() => setIsLoading(false));
+        props.fetchUserSets().then(() => setIsLoading(false));
       else if (languages === false)
         props.fetchLanguages().then(() => setIsLoading(false));
       else setIsLoading(false);
@@ -52,7 +52,7 @@ const SetsAndLanguages = (props) => {
 };
 
 SetsAndLanguages.propTypes = {
-  fetchSets: PropTypes.func.isRequired,
+  fetchUserSets: PropTypes.func.isRequired,
   fetchLanguages: PropTypes.func.isRequired,
 };
 
@@ -64,6 +64,6 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { fetchSets, fetchLanguages })(
+export default connect(mapStateToProps, { fetchUserSets, fetchLanguages })(
   SetsAndLanguages
 );

@@ -3,7 +3,7 @@ import { Switch, Route, useRouteMatch } from "react-router-dom";
 import MainLayout from "components/layouts/MainLayout";
 import SetsAndLanguages from "components/elements/startLearning/SetsAndLanguages";
 import Mode from "components/elements/startLearning/Mode";
-import Categories from "components/elements/startLearning/Categories";
+import PublicSets from "components/elements/startLearning/PublicSets";
 import "components/elements/startLearning/startLearning.css";
 
 const StartLearning = () => {
@@ -20,8 +20,8 @@ const StartLearning = () => {
               <Route path={`${match.path}/tryb`}>
                 <Mode />
               </Route>
-              <Route path={`${match.path}/kategorie`}>
-                <Categories />
+              <Route path={`${match.path}/zestawy`}>
+                <PublicSets />
               </Route>
             </Switch>
           </div>

@@ -243,3 +243,8 @@ select option {
     display: none;
   }
 }
+
+.page-error-message {
+  text-align: center;
+  padding: 20px 0;
+}

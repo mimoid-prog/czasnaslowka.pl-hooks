@@ -9,6 +9,7 @@ import GuestRoute from "components/routes/GuestRoute";
 import UserRoute from "components/routes/UserRoute";
 import Learning from "pages/Learning";
 import MyProfile from "pages/MyProfile";
+import MySets from "pages/MySets";
 
 function App() {
   return (
@@ -34,6 +35,9 @@ function App() {
         </Route>
         <UserRoute path="/moj-profil">
           <MyProfile />
+        </UserRoute>
+        <UserRoute path="/moje-zestawy">
+          <MySets />
         </UserRoute>
       </Switch>
     </div>
