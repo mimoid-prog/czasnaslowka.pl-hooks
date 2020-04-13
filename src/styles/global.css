@@ -212,7 +212,7 @@ select option {
 
   .quaternary-title {
     font-size: 22px;
-    margin-bottom: 14px;
+    margin-bottom: 10px;
   }
 }
 
@@ -247,4 +247,11 @@ select option {
 .page-error-message {
   text-align: center;
   padding: 20px 0;
+}
+
+.centered-loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }

@@ -31,11 +31,11 @@ const SetsAndLanguages = (props) => {
   }, []);
 
   return (
-    <div>
+    <>
       {isLoading ? (
         <Loading />
       ) : (
-        <div>
+        <>
           {props.isAuthenticated && (
             <div className="sets-section">
               <Sets />
@@ -45,9 +45,9 @@ const SetsAndLanguages = (props) => {
           <div className="languages-section">
             <Languages />
           </div>
-        </div>
+        </>
       )}
-    </div>
+    </>
   );
 };
 

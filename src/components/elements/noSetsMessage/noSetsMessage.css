@@ -1,0 +1,14 @@
+.user-sets-message {
+  padding: 25px;
+  margin: 0 auto;
+  border: 3px solid var(--dark-blue-color);
+  text-align: center;
+}
+
+.user-sets-message h3 {
+  margin-bottom: 10px;
+}
+
+.user-sets-message a {
+  color: var(--pink-color);
+}

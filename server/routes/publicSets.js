@@ -16,7 +16,8 @@ router.post("/fetch_public_set", (req, res) => {
 });
 
 router.post("/fetch_public_sets", (req, res) => {
-  PublicSet.find()
+  const language = req.body.language;
+  PublicSet.find({ language })
     .then((sets) => {
       let fSets = [];
       sets.forEach((set) => {

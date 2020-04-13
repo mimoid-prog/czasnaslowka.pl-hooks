@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Link, useLocation, useRouteMatch } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { ReactComponent as Arrow } from "images/arrow.svg";
 import Loading from "components/utils/Loading";
 import api from "api";
 
 const PublicSets = () => {
   let location = useLocation();
-  let match = useRouteMatch();
   const [isLoading, setIsLoading] = useState(true);
   const [sets, setSets] = useState([]);
 
@@ -23,7 +22,7 @@ const PublicSets = () => {
         <Loading />
       ) : (
         <div className="categories">
-          <h2 className="secondary-title">Wybierz kategorię:</h2>
+          <h2 className="secondary-title">Zestawy:</h2>
           <ul>
             {sets.map((item, i) => (
               <li className="item set-field" key={i}>

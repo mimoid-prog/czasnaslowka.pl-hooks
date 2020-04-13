@@ -161,12 +161,9 @@ const Learning = (props) => {
   }, []);
 
   useEffect(() => {
-    if (answers.index > 6) {
-      scrollbar.current.scrollToBottom();
-    }
+    if (answers.index > 6) scrollbar.current.scrollToBottom();
   }, [answers.index]);
 
-  console.log("err", errorMessage);
   return (
     <MainLayout>
       <div className="learning">

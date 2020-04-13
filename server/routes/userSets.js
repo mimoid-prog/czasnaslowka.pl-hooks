@@ -46,15 +46,16 @@ router.post("/create_set", (req, res) => {
 
   newSet
     .save()
-    .then(() => {
-      try {
-        const sets = fetchUserSets(userID);
-        res.json({ sets });
-      } catch {
-        res
-          .status(400)
-          .json({ error: "Błąd pobierania zestawów. Spróbuj ponownie." });
-      }
+    .then((createdSet) => {
+      fetchUserSets(userID)
+        .then((sets) => {
+          res.json({ sets, createdSet });
+        })
+        .catch(() => {
+          res
+            .status(400)
+            .json({ error: "Błąd pobierania zestawów. Spróbuj ponownie." });
+        });
     })
     .catch(() => {
       res
@@ -66,11 +67,12 @@ router.post("/create_set", (req, res) => {
 router.post("/update_set", (req, res) => {
   const userID = req.currentUser._id;
   const set = req.body.set;
+  console.log("jesetm w udadate");
 
-  Set.findOne({ _id: set.id, owner: userID })
-    .then((set) => {
-      Set.findOneAndUpdate(
-        { _id: set.id },
+  Set.findOne({ _id: set._id, owner: userID })
+    .then(() => {
+      Set.findByIdAndUpdate(
+        set._id,
         {
           name: set.name,
           icon: set.language,
@@ -80,15 +82,17 @@ router.post("/update_set", (req, res) => {
         },
         { new: true }
       )
-        .then(() => {
-          try {
-            const sets = fetchUserSets(userID);
-            res.json({ sets });
-          } catch {
-            res
-              .status(400)
-              .json({ error: "Błąd pobierania zestawów. Spróbuj ponownie." });
-          }
+        .then((updatedSet) => {
+          console.log("CHYBA SIE ZAPISALO?:", updatedSet);
+          fetchUserSets(userID)
+            .then((sets) => {
+              res.json({ sets, updatedSet });
+            })
+            .catch(() => {
+              res
+                .status(400)
+                .json({ error: "Błąd pobierania zestawów. Spróbuj ponownie." });
+            });
         })
         .catch(() => {
           res
@@ -108,14 +112,15 @@ router.post("/remove_set", (req, res) => {
   Set.findOne({ _id: setID, owner: userID })
     .then((set) => {
       Set.deleteOne({ _id: setID }).then(() => {
-        try {
-          const sets = fetchUserSets(userID);
-          res.json({ sets });
-        } catch {
-          res
-            .status(400)
-            .json({ error: "Błąd pobierania zestawów. Spróbuj ponownie." });
-        }
+        fetchUserSets(userID)
+          .then((sets) => {
+            res.json({ sets });
+          })
+          .catch(() => {
+            res
+              .status(400)
+              .json({ error: "Błąd pobierania zestawów. Spróbuj ponownie." });
+          });
       });
     })
     .catch(() => {

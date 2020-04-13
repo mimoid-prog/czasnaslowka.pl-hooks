@@ -23,13 +23,9 @@ export default {
     fetchUserSets: () =>
       axios.post("/api/user_sets/fetch_user_sets").then((res) => res.data.sets),
     createSet: (set) =>
-      axios
-        .post("/api/user_sets/create_set", { set })
-        .then((res) => res.data.sets),
+      axios.post("/api/user_sets/create_set", { set }).then((res) => res.data),
     updateSet: (set) =>
-      axios
-        .post("/api/user_sets/update_set", { set })
-        .then((res) => res.data.sets),
+      axios.post("/api/user_sets/update_set", { set }).then((res) => res.data),
     removeSet: (id) =>
       axios
         .post("/api/user_sets/remove_set", { id })
@@ -40,9 +36,9 @@ export default {
       axios
         .post("/api/public_sets/fetch_public_set", { id })
         .then((res) => res.data.set),
-    fetchPublicSets: () =>
+    fetchPublicSets: (language) =>
       axios
-        .post("/api/public_sets/fetch_public_sets")
+        .post("/api/public_sets/fetch_public_sets", { language })
         .then((res) => res.data.sets),
   },
   languages: {
