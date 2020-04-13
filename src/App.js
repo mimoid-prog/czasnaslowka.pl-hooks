@@ -32,9 +32,9 @@ function App() {
         <GuestRoute path="/przypomnienie-hasla">
           <ForgotPassword />
         </GuestRoute>
-        <GuestRoute path="/zmiana-hasla/:token">
+        <Route path="/zmiana-hasla/:token">
           <ResetPassword />
-        </GuestRoute>
+        </Route>
         <Route path="/zacznij-nauke">
           <StartLearning />
         </Route>
