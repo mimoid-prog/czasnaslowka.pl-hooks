@@ -67,7 +67,6 @@ router.post("/create_set", (req, res) => {
 router.post("/update_set", (req, res) => {
   const userID = req.currentUser._id;
   const set = req.body.set;
-  console.log("jesetm w udadate");
 
   Set.findOne({ _id: set._id, owner: userID })
     .then(() => {
@@ -83,7 +82,6 @@ router.post("/update_set", (req, res) => {
         { new: true }
       )
         .then((updatedSet) => {
-          console.log("CHYBA SIE ZAPISALO?:", updatedSet);
           fetchUserSets(userID)
             .then((sets) => {
               res.json({ sets, updatedSet });

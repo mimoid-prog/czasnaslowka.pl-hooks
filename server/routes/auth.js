@@ -9,7 +9,8 @@ router.post("/", (req, res) => {
   const { credentials } = req.body;
   User.findOne({ email: credentials.email }).then((user) => {
     if (user && user.isValidPassword(credentials.password)) {
-      res.json({ user: user.toAuthJSON() });
+      if (user.confirmed === true) res.json({ user: user.toAuthJSON() });
+      else res.json({ user: "notConfirmed" });
     } else {
       res
         .status(400)
@@ -24,7 +25,12 @@ router.post("/confirmation", (req, res) => {
     { confirmationToken: token },
     { confirmationToken: "", confirmed: true },
     { new: true }
-  ).then((user) => res.json({ user: user ? user.toAuthJSON() : user }));
+  )
+    .then((user) => {
+      if (user) res.json({});
+      else res.status(400).json({ error: "Wystąpił błąd." });
+    })
+    .catch(() => res.status(400).json({ error: "Wystąpił błąd." }));
 });
 
 router.post("/reset_password_request", (req, res) => {
@@ -67,7 +73,6 @@ router.post("/reset_password", (req, res) => {
       if (user) {
         user.setPassword(password);
         user.resetPasswordToken = "";
-        //sendNotficationAboutPasswordEmail(user);
         user.save().then(() => res.json({}));
       } else {
         res.status(404).json({ errors: { global: "Nieprawidłowy link" } });

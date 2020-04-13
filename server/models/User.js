@@ -17,7 +17,6 @@ const schema = new mongoose.Schema(
     confirmationToken: { type: String, default: "" },
     resetPasswordToken: { type: String, default: "" },
     creationDate: { type: String, required: true },
-    rank: { type: String },
   },
   { timestamps: true }
 );
@@ -42,7 +41,7 @@ schema.methods.setConfirmationToken = function setConfirmationToken() {
 };
 
 schema.methods.generateConfirmationUrl = function generateConfirmationUrl() {
-  return `${process.env.HOST}/confirmation/${this.confirmationToken}`;
+  return `${process.env.HOST}/aktywacja/${this.confirmationToken}`;
 };
 
 schema.methods.toAuthJSON = function toAuthJSON() {
@@ -64,12 +63,12 @@ schema.methods.generateResetPasswordToken = function generateResetPasswordToken(
       _id: this.id,
     },
     process.env.JWT_SECRET,
-    { expiresIn: "1h" }
+    { expiresIn: "2h" }
   );
 };
 
 schema.methods.generateResetPasswordLink = function generateResetPasswordLink() {
-  return `${process.env.HOST}/reset_password/${this.resetPasswordToken}`;
+  return `${process.env.HOST}/zmiana-hasla/${this.resetPasswordToken}`;
 };
 
 schema.methods.setPassword = function setPassword(password) {

@@ -6,8 +6,8 @@ import { Link, Redirect } from "react-router-dom";
 const Login = () => {
   const [toRender, setToRender] = useState("form");
   const changeRenderedComponent = (data) => {
-    if (data.confirmed === true) setToRender("redirect");
-    else setToRender("message");
+    if (data === "notConfirmed") setToRender("message");
+    else if (data) setToRender("redirect");
   };
 
   return (
@@ -26,7 +26,7 @@ const Login = () => {
             Wejdź na swoją skrzynkę pocztową i wciśnij link weryfikacyjny, aby
             konto zostało aktywowane.
           </p>
-          <Link to="/" class="no-border-btn pure-btn form-home-link">
+          <Link to="/" class="no-border-btn pure-btn secondary-home-link">
             Strona główna
           </Link>
         </div>

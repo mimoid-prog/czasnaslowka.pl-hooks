@@ -10,6 +10,8 @@ import UserRoute from "components/routes/UserRoute";
 import Learning from "pages/Learning";
 import MyProfile from "pages/MyProfile";
 import MySets from "pages/MySets";
+import Activation from "pages/Activation";
+import ResetPassword from "pages/ResetPassword";
 
 function App() {
   return (
@@ -24,8 +26,14 @@ function App() {
         <GuestRoute path="/rejestracja">
           <Signup />
         </GuestRoute>
+        <GuestRoute path="/aktywacja/:token">
+          <Activation />
+        </GuestRoute>
         <GuestRoute path="/przypomnienie-hasla">
           <ForgotPassword />
+        </GuestRoute>
+        <GuestRoute path="/zmiana-hasla/:token">
+          <ResetPassword />
         </GuestRoute>
         <Route path="/zacznij-nauke">
           <StartLearning />

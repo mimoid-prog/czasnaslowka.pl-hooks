@@ -19,7 +19,10 @@ const UserSetsEdit = (props) => {
                   props.currentSetId === set.id ? "active" : ""
                 }`}
               >
-                <img src={require(`images/icons/flags/${set.icon}.png`)} />
+                <img
+                  src={require(`images/icons/flags/${set.icon}.png`)}
+                  alt="flaga"
+                />
                 <p>{set.name}</p>
                 <div className="buttons">
                   <button

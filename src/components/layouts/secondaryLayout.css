@@ -31,6 +31,13 @@
   text-align: center;
 }
 
+.secondary-home-link {
+  color: var(--pink-color);
+  margin-top: 15px;
+  border-bottom: 3px solid var(--pink-color) !important;
+  display: inline-block;
+}
+
 @media (min-width: 450px) {
   .secondary {
     display: flex;

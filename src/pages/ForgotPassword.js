@@ -18,12 +18,12 @@ const ForgotPassword = (props) => {
         </>
       ) : (
         <div className="form-message">
-          <h4 className="quaternary-title">Wysłano wiadomość.</h4>
+          <h4 className="quaternary-title">Wysłano wiadomość</h4>
           <p>
             Na twoją skrzynkę pocztową został wysłany link umożliwiający zmianę
-            hasła
+            hasła.
           </p>
-          <Link to="/" class="no-border-btn pure-btn form-home-link">
+          <Link to="/" class="no-border-btn pure-btn secondary-home-link">
             Strona główna
           </Link>
         </div>

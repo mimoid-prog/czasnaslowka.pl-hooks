@@ -13,7 +13,7 @@ export const userLoggedOut = () => ({
 
 export const login = (credentials) => (dispatch) =>
   api.user.login(credentials).then((res) => {
-    if (res.user) {
+    if (res.user && res.user !== "notConfirmed") {
       localStorage.czasnaslowkaJWT = res.user.token;
       setAuthorizationHeader(res.user.token);
       dispatch(userLoggedIn(res.user));
@@ -26,8 +26,7 @@ export const logout = () => (dispatch) => {
   dispatch(userLoggedOut());
 };
 
-export const confirm = (token) => (dispatch) =>
-  api.user.confirm(token).then((user) => user);
+export const confirm = (token) => () => api.user.confirm(token);
 
 export const resetPasswordRequest = ({ email }) => () =>
   api.user.resetPasswordRequest(email);

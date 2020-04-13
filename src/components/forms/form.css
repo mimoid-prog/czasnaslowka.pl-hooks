@@ -74,11 +74,3 @@
 .form-message {
   text-align: center;
 }
-
-.form-home-link {
-  color: var(--pink-color);
-}
-
-.form-message p {
-  margin-bottom: 15px;
-}

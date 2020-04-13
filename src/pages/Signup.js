@@ -21,7 +21,7 @@ const Signup = (props) => {
             Wejdź na swoją skrzynkę pocztową i wciśnij link weryfikacyjny, aby
             konto zostało aktywowane.
           </p>
-          <Link to="/" class="no-border-btn pure-btn form-home-link">
+          <Link to="/" class="no-border-btn pure-btn secondary-home-link">
             Strona główna
           </Link>
         </div>
