@@ -11,12 +11,12 @@ import thunk from "redux-thunk";
 import decode from "jwt-decode";
 import { userLoggedIn } from "./actions/auth";
 import setAuthorizationHeader from "setAuthorizationHeader";
-import { composeWithDevTools } from "redux-devtools-extension";
+import ReactGA from "react-ga";
 
-const store = createStore(
-  rootReducer,
-  composeWithDevTools(applyMiddleware(thunk))
-);
+ReactGA.initialize("UA-156522420-2");
+ReactGA.pageview(window.location.pathname + window.location.search);
+
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 if (localStorage.czasnaslowkaJWT) {
   const payload = decode(localStorage.czasnaslowkaJWT);

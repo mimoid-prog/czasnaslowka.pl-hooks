@@ -11,14 +11,7 @@ const Languages = (props) => {
       <ul className="sets-and-languages-list">
         {props.languages.map((item, i) => (
           <li className="item set-field" key={i}>
-            <Link
-              to={{
-                pathname: `${match.path}/zestawy`,
-                state: {
-                  language: item.language,
-                },
-              }}
-            >
+            <Link to={`${match.path}/zestawy?language=${item.language}`}>
               <img
                 src={require(`images/icons/flags/${item.image}.png`)}
                 alt={item.languageName}

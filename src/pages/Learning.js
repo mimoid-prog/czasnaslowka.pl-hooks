@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useLocation } from "react-router-dom";
 import { fetchUserSet } from "actions/userSets";
 import { fetchPublicSet } from "actions/publicSets";
 import { connect } from "react-redux";
@@ -9,6 +8,7 @@ import { Pie } from "react-chartjs-2";
 import { Scrollbars } from "react-custom-scrollbars";
 import repeatImg from "images/refresh.png";
 import "./learning.css";
+import useQuery from "components/utils/useQuery";
 
 const Learning = (props) => {
   const scrollbar = useRef(null);
@@ -268,10 +268,6 @@ const Learning = (props) => {
     </MainLayout>
   );
 };
-
-function useQuery() {
-  return new URLSearchParams(useLocation().search);
-}
 
 function useInterval(callback, delay) {
   const savedCallback = useRef();

@@ -14,15 +14,7 @@ const Sets = (props) => {
         <ul className="sets-and-languages-list">
           {props.sets.map((item, i) => (
             <li className="item set-field" key={i}>
-              <Link
-                to={{
-                  pathname: `${match.path}/tryb`,
-                  state: {
-                    id: item.id,
-                    public: "no",
-                  },
-                }}
-              >
+              <Link to={`${match.path}/tryb?id=${item.id}&public=no`}>
                 <img
                   src={require(`images/icons/flags/${item.icon}.png`)}
                   alt="Flaga zestawu"

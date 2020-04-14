@@ -18,7 +18,7 @@ router.post("/fetch_user_set", (req, res) => {
     });
 });
 
-router.post("/fetch_user_sets", async (req, res) => {
+router.post("/fetch_user_sets", (req, res) => {
   const userID = req.currentUser._id;
   fetchUserSets(userID)
     .then((sets) => {
